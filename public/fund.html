@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090d">
+
+  <title>$50 Fund — Memecoin Launcher</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: #08090d;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 9, 13, 0.88);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid #20232c;
+    }
+
+    .nav-inner {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #8b5cf6;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      font-size: 14px;
+      color: #b5b8c2;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-button {
+      background: #8b5cf6;
+      padding: 10px 17px;
+      border-radius: 9px;
+      font-weight: 700;
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 90px 0 70px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid #30333d;
+      border-radius: 100px;
+      color: #b9b4ff;
+      font-size: 13px;
+      margin-bottom: 25px;
+      background: #101119;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 9vw, 90px);
+      line-height: 0.95;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #8b5cf6;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #a8abb5;
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 23px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1px solid #30333d;
+    }
+
+    .btn-primary {
+      background: #8b5cf6;
+      border-color: #8b5cf6;
+    }
+
+    .btn-secondary {
+      background: #11131a;
+    }
+
+    /* FUND CARD */
+
+    .fund-card {
+      max-width: 700px;
+      margin: 20px auto 0;
+      background: #101218;
+      border: 1px solid #292c35;
+      border-radius: 20px;
+      padding: 28px;
+      text-align: left;
+    }
+
+    .fund-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .fund-amount {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .fund-goal {
+      color: #9da0aa;
+    }
+
+    .progress {
+      height: 13px;
+      background: #252832;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: #8b5cf6;
+      border-radius: inherit;
+      transition: width 0.6s ease;    
+     }
+
+    .fund-note {
+      margin-top: 15px;
+      color: #888c98;
+      font-size: 13px;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 38px;
+      letter-spacing: -1.5px;
+      margin-bottom: 12px;
+    }
+
+    .section-description {
+      color: #969aa5;
+      max-width: 650px;
+      margin-bottom: 35px;
+    }
+
+    /* CARDS */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: #101218;
+      border: 1px solid #292c35;
+      border-radius: 16px;
+      padding: 25px;
+    }
+
+    .card-number {
+      color: #8b5cf6;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #999da8;
+      font-size: 14px;
+    }
+
+    /* CONTRIBUTE */
+
+    .contribute-box {
+      background: linear-gradient(135deg, #15121f, #101218);
+      border: 1px solid #383047;
+      border-radius: 20px;
+      padding: 35px;
+    }
+
+    .wallet-box {
+      margin-top: 25px;
+      background: #08090d;
+      border: 1px solid #292c35;
+      padding: 18px;
+      border-radius: 12px;
+    }
+
+    .wallet-label {
+      color: #858995;
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+
+    .wallet-address {
+      word-break: break-all;
+      font-family: monospace;
+      color: #c5b8ff;
+      font-size: 14px;
+    }
+
+    .copy-btn {
+      margin-top: 15px;
+      border: 0;
+      background: #8b5cf6;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .qr-container {
+  width: 200px;
+  height: 200px;
+  background-color: #16171a;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.qr-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+
+    /* STEPS */
+
+    .steps {
+      display: grid;
+      gap: 15px;
+    }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px;
+      background: #101218;
+      border: 1px solid #292c35;
+      border-radius: 14px;
+    }
+
+    .step-number {
+      min-width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #8b5cf6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .step p {
+      color: #969aa5;
+      font-size: 14px;
+    }
+
+    /* WARNING */
+
+    .notice {
+      background: #11131a;
+      border: 1px solid #383b45;
+      border-radius: 16px;
+      padding: 25px;
+      margin-top: 25px;
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .notice p {
+      color: #999da8;
+      font-size: 14px;
+    }
+
+    /* REFUND */
+
+    .refund {
+      border: 1px solid #463a5b;
+      background: #14101c;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid #20232c;
+      padding: 45px 0;
+      color: #777b87;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .socials {
+      display: flex;
+      gap: 18px;
+    }
+
+    .socials a:hover {
+      color: white;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 65px 0 45px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 31px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .fund-card {
+        padding: 22px;
+      }
+
+      .contribute-box {
+        padding: 24px;
+      }
+
+      .wallet-address {
+        font-size: 12px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+  <div class="container nav-inner">
+
+    <a href="#" class="logo">
+      Memecoin<span>Launcher</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#contribute">Contribute</a>
+      <a href="#transparency">Transparency</a>
+      <a href="#refund">Refund</a>
+    </div>
+
+    <a href="#contribute" class="nav-button">
+      Support
+    </a>
+
+  </div>
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+  <div class="container">
+
+    <div class="badge">
+      🎯 PUBLIC $50 CAMPAIGN
+    </div>
+
+    <h1>
+      From <span>$0</span><br>
+      to $50.
+    </h1>
+
+    <p>
+      I'm publicly documenting my journey of learning how to create
+      and launch a memecoin on Solana — starting with a $50 target.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#contribute" class="btn btn-primary">
+        Contribute
+      </a>
+
+      <a href="#transparency" class="btn btn-secondary">
+        See the Plan
+      </a>
+    </div>
+
+
+    <!-- FUND PROGRESS -->
+
+    <div class="fund-card">
+  <div class="fund-top">
+    <div>
+      <div class="fund-amount" id="fundAmount">$0</div>
+      <div class="fund-goal">Current campaign balance</div>
+    </div>
+    <div class="fund-goal">Goal: <strong>$50</strong></div>
+  </div>
+  <div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <div class="fund-note" id="fundNote">
+    Loading campaign data...
+  </div>
+</div>
+
+  </div>
+
+</header>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Why this campaign?
+    </h2>
+
+    <p class="section-description">
+      This isn't a mysterious token launch. I'm documenting the
+      process publicly and showing how the funds are used.
+    </p>
+
+
+    <div class="grid">
+
+      <div class="card">
+
+        <div class="card-number">
+          01
+        </div>
+
+        <h3>
+          Learn
+        </h3>
+
+        <p>
+          I'm learning the process of creating, preparing and
+          launching a memecoin on Solana.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-number">
+          02
+        </div>
+
+        <h3>
+          Build
+        </h3>
+
+        <p>
+          The campaign provides a small starting budget for
+          experimenting with the launch process.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-number">
+          03
+        </div>
+
+        <h3>
+          Document
+        </h3>
+
+        <p>
+          The journey will be shared publicly through the
+          Memecoin Launcher social accounts.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTRIBUTE -->
+
+<section id="contribute">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      💸 Contribute
+    </h2>
+
+    <p class="section-description">
+      You choose the amount. There is no minimum contribution.
+    </p>
+
+
+    <div class="contribute-box">
+
+      <h3>
+        Send SOL
+      </h3>
+
+      <p class="section-description">
+        Contributions can be sent directly to the campaign wallet.
+        Always verify the address before sending.
+      </p>
+
+
+      <div class="wallet-box">
+
+        <div class="wallet-label">
+          CAMPAIGN SOLANA ADDRESS
+        </div>
+
+        <!-- REPLACE THIS ADDRESS -->
+
+        <div id="wallet" class="wallet-address">
+          5P8zMoacaBamm3RBC6VNrRVPYMA2vg21nTNzLYxdvAX4
+        </div>
+
+        <button class="copy-btn" onclick="copyWallet()">
+          Copy Address
+        </button>
+
+      </div>
+
+
+<div class="qr-container">
+<img src="qr.jpg" alt="Campaign wallet QR code">
+</div>
+
+  </div>
+
+</section>
+
+
+<!-- BENEFITS -->
+
+<section>
+
+  <div class="container">
+
+    <h2 class="section-title">
+      👤 Why support?
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <div class="card-number">
+          MY BENEFIT
+        </div>
+
+        <h3>
+          Fund the experiment
+        </h3>
+
+        <p>
+          Contributions help provide the starting funds needed
+          for my memecoin launch experiment.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-number">
+          YOUR BENEFIT
+        </div>
+
+        <h3>
+          Early supporter
+        </h3>
+
+        <p>
+          Supporters may receive access to the token or contract
+          address early, subject to the project's final launch plan.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-number">
+          PUBLIC BENEFIT
+        </div>
+
+        <h3>
+          Follow the journey
+        </h3>
+
+        <p>
+          Everyone can watch the project develop from the first
+          contribution through the eventual launch.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TRANSPARENCY -->
+
+<section id="transparency">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      🔎 Transparency
+    </h2>
+
+    <p class="section-description">
+      The campaign is designed to be publicly verifiable.
+    </p>
+
+
+    <div class="steps">
+
+      <div class="step">
+
+        <div class="step-number">
+          1
+        </div>
+
+        <div>
+          <h3>
+            Public wallet
+          </h3>
+
+          <p>
+            The campaign wallet will be publicly displayed.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          2
+        </div>
+
+        <div>
+          <h3>
+            Verify transactions
+          </h3>
+
+          <p>
+            Solana blockchain transactions can be independently
+            checked using a block explorer.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          3
+        </div>
+
+        <div>
+          <h3>
+            Disclose spending
+          </h3>
+
+          <p>
+            I will disclose the intended use of campaign funds
+            before spending them.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          4
+        </div>
+
+        <div>
+          <h3>
+            Publish the launch
+          </h3>
+
+          <p>
+            The final token address and relevant launch
+            transactions will be shared publicly.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ROADMAP -->
+
+<section>
+
+  <div class="container">
+
+    <h2 class="section-title">
+      🚀 The Roadmap
+    </h2>
+
+
+    <div class="steps">
+
+      <div class="step">
+
+        <div class="step-number">
+          01
+        </div>
+
+        <div>
+          <h3>
+            FUND 🎯
+          </h3>
+
+          <p>
+            Reach the $50 funding goal
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          02
+        </div>
+
+        <div>
+          <h3>
+            LEARN & BUILD 📚
+          </h3>
+
+          <p>
+            Learn the Solana token process and build everything needed for the launch.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          03
+        </div>
+
+        <div>
+          <h3>
+            CREATE & LAUNCH 🪙
+          </h3>
+
+          <p>
+            Create the token, configure it, and launch it on Solana.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">
+          04
+        </div>
+
+        <div>
+          <h3>
+            UPDATE & PUBLISH 📢
+          </h3>
+
+          <p>
+            Share the launch details, token address, progress, transactions, and ongoing updates publicly.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- REFUND POLICY -->
+
+<section id="refund">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      ↩️ Refund Policy
+    </h2>
+
+    <div class="card refund">
+
+      <h3>
+        My commitment
+      </h3>
+
+      <br>
+
+      <p>
+        I'm launching this project to learn and build experience
+        in creating and launching memecoins.
+      </p>
+
+      <br>
+
+      <p>
+        I intend to refund the contribution amount to supporters
+        after generating sufficient earnings from future trading
+        activity and/or creator fees.
+      </p>
+
+      <br>
+
+      <p>
+        Where technically possible, refunds will be sent to the
+        corresponding wallet address from which the contribution
+        was received, OR may receive memecoin 
+      </p>
+
+      <br>
+
+      <p>
+After the memecoin is publicly launched and published, a supporter’s contribution may also be returned in the form of the launched memecoin, with the amount of tokens determined according to the token’s value/terms at that time. The exact token amount will depend on the applicable market value and available allocation.
+      </p>
+
+      <br>
+
+      <p>
+        Refund transactions will be publicly verifiable on-chain.
+      </p>
+
+      <br>
+
+      <p>
+        Refunds depend on generating sufficient future earnings,
+        so no specific refund date is promised.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DISCLAIMER -->
+
+<section>
+
+  <div class="container">
+
+    <div class="notice">
+
+      <strong>
+        Important Disclosure
+      </strong>
+
+      <p>
+        This website describes a personal memecoin launch
+        experiment. Contributions should not be treated as an
+        investment, loan, or guaranteed-return arrangement.
+        Cryptocurrency transactions can be irreversible and
+        involve significant risk. Do your own research before
+        sending funds.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <div>
+      © 2026 Memecoin Launcher
+    </div>
+
+    <div class="socials">
+
+      <a href="https://www.instagram.com/memecoinlauncher?stkn=ams4b21vZGk0ZXdj" target="_blank">
+        Instagram
+      </a>
+
+      <a href="https://x.com/MemcoinLauncher" target="_blank">
+        X
+      </a>
+
+      <a href="https://solscan.io/account/5P8zMoacaBamm3RBC6VNrRVPYMA2vg21nTNzLYxdvAX4" target="_blank">
+        Solscan
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+  const walletAddress = "5P8zMoacaBamm3RBC6VNrRVPYMA2vg21nTNzLYxdvAX4";
+  document.getElementById("wallet").textContent = walletAddress;
+
+  // ---------- Load live campaign progress ----------
+  async function loadProgress() {
+    try {
+      const res = await fetch("/api/campaign/progress");
+      if (!res.ok) throw new Error("API error");
+      const data = await res.json();
+
+      const raised = data.totalUSD || 0;
+      const goal = 50;
+      const percent = Math.min((raised / goal) * 100, 100);
+
+      document.getElementById("fundAmount").textContent =
+        "$" + raised.toFixed(2);
+
+      document.getElementById("progressBar").style.width = percent + "%";
+
+      if (raised >= goal) {
+        document.getElementById("fundNote").textContent =
+          "🎉 Goal reached! Thank you to all supporters.";
+      } else {
+        document.getElementById("fundNote").textContent =
+          `Raised ${data.totalSOL?.toFixed(4) || 0} SOL from ${
+            data.contributors || 0
+          } contribution(s) · SOL $${data.solPrice || 0}`;
+      }
+    } catch (err) {
+      document.getElementById("fundNote").textContent =
+        "Unable to load live progress. Refresh to retry.";
+    }
+  }
+
+  // Load immediately and refresh every 60 seconds
+  loadProgress();
+  setInterval(loadProgress, 60000);
+
+  // ---------- Copy wallet ----------
+  function copyWallet() {
+    navigator.clipboard.writeText(walletAddress);
+    const button = document.querySelector(".copy-btn");
+    button.textContent = "Copied ✓";
+    setTimeout(() => {
+      button.textContent = "Copy Address";
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>
