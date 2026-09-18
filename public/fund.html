@@ -380,14 +380,64 @@
       flex-wrap: wrap;
     }
 
-    .socials {
-      display: flex;
-      gap: 18px;
-    }
 
-    .socials a:hover {
-      color: white;
-    }
+.socials {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  border: 1px solid #30333d;
+  background: #14161e;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.25);
+  background: #1a1d27;
+}
+
+.social-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* Brand accent colors on the left border */
+.social-instagram {
+  border-color: #e1306c;
+}
+.social-instagram:hover {
+  box-shadow: 0 8px 22px rgba(225, 48, 108, 0.3);
+}
+
+.social-x {
+  border-color: #ffffff40;
+}
+.social-x:hover {
+  box-shadow: 0 8px 22px rgba(255, 255, 255, 0.18);
+}
+
+.social-solscan {
+  border-color: #9945ff;
+}
+.social-solscan:hover {
+  box-shadow: 0 8px 22px rgba(153, 69, 255, 0.35);
+}
+
+.footer-copy {
+  color: #777b87;
+  font-size: 13px;
+}
 
     /* MOBILE */
 
@@ -1018,33 +1068,35 @@ After the memecoin is publicly launched and published, a supporter’s contribut
 <!-- FOOTER -->
 
 <footer>
-
   <div class="container footer-inner">
-
-    <div>
+    <div class="footer-copy">
       © 2026 Memecoin Launcher
     </div>
 
     <div class="socials">
-
-      <a href="https://www.instagram.com/memecoinlauncher?stkn=ams4b21vZGk0ZXdj" target="_blank">
-        Instagram
+      <a href="https://www.instagram.com/memecoinlauncher?stkn=ams4b21vZGk0ZXdj"
+         target="_blank" rel="noopener"
+         class="social-link social-instagram">
+        <span class="social-icon">📷</span>
+        <span>Instagram</span>
       </a>
 
-      <a href="https://x.com/MemcoinLauncher" target="_blank">
-        X
+      <a href="https://x.com/MemcoinLauncher"
+         target="_blank" rel="noopener"
+         class="social-link social-x">
+        <span class="social-icon">𝕏</span>
+        <span>X</span>
       </a>
 
-      <a href="https://solscan.io/account/5P8zMoacaBamm3RBC6VNrRVPYMA2vg21nTNzLYxdvAX4" target="_blank">
-        Solscan
+      <a href="https://solscan.io/account/5P8zMoacaBamm3RBC6VNrRVPYMA2vg21nTNzLYxdvAX4"
+         target="_blank" rel="noopener"
+         class="social-link social-solscan">
+        <span class="social-icon">◎</span>
+        <span>Solscan</span>
       </a>
-
     </div>
-
   </div>
-
 </footer>
-
 
 <script>
   const walletAddress = "5P8zMoacaBamm3RBC6VNrRVPYMA2vg21nTNzLYxdvAX4";
